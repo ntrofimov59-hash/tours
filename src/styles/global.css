@@ -1,10 +1,70 @@
 @layer reset, base, tokens, recipes, utilities;
 
+:root {
+  --colors-teal-1: #fafefd;
+  --colors-teal-2: #f3fbf9;
+  --colors-teal-3: #e0f8f3;
+  --colors-teal-4: #ccf3ea;
+  --colors-teal-5: #b8eae0;
+  --colors-teal-6: #a1ded2;
+  --colors-teal-7: #83cdc1;
+  --colors-teal-8: #53b9ab;
+  --colors-teal-9: #12a594;
+  --colors-teal-10: #0d9b8a;
+  --colors-teal-11: #008573;
+  --colors-teal-12: #0d3d38;
+
+  --colors-teal-a1: #00cc9905;
+  --colors-teal-a2: #00aa800c;
+  --colors-teal-a3: #00c69d1f;
+  --colors-teal-a4: #00c39633;
+  --colors-teal-a5: #00b49047;
+  --colors-teal-a6: #00a6855e;
+  --colors-teal-a7: #0099807c;
+  --colors-teal-a8: #009783ac;
+  --colors-teal-a9: #009e8ced;
+  --colors-teal-a10: #009180f2;
+  --colors-teal-a11: #008573;
+  --colors-teal-a12: #00332d;
+
+  /* Sage */
+
+  --colors-sage-1: #fbfdfc;
+  --colors-sage-2: #f8faf9;
+  --colors-sage-3: #f1f4f3;
+  --colors-sage-4: #ecefed;
+  --colors-sage-5: #e6e9e8;
+  --colors-sage-6: #dfe4e2;
+  --colors-sage-7: #d7dcda;
+  --colors-sage-8: #c2c9c6;
+  --colors-sage-9: #8a918e;
+  --colors-sage-10: #808784;
+  --colors-sage-11: #606764;
+  --colors-sage-12: #1a211e;
+
+  --colors-sage-a1: #00804004;
+  --colors-sage-a2: #00402007;
+  --colors-sage-a3: #002d1e0e;
+  --colors-sage-a4: #001f1513;
+  --colors-sage-a5: #00180819;
+  --colors-sage-a6: #00140d20;
+  --colors-sage-a7: #00140a28;
+  --colors-sage-a8: #000f083d;
+  --colors-sage-a9: #000f0b75;
+  --colors-sage-a10: #000c097f;
+  --colors-sage-a11: #000a089f;
+  --colors-sage-a12: #000805e5;
+
+  --with-max-content: 1024px;
+}
+
 html,
 body {
+  margin: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+
+  font-family: "Roboto Variable", sans-serif;
 }
 
 body {
@@ -14,6 +74,7 @@ body {
 }
 
 main {
-  overflow-y: auto;
   width: 100%;
+  max-width: var(--with-max-content);
+  margin: 0 auto;
 }

@@ -6,7 +6,9 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@colors": ["./src/styles/colors.scss"],
+      "@sizes": ["./src/styles/sizes.scss"]
     }
   }
 }
