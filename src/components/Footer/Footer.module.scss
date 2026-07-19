@@ -1,5 +1,5 @@
-@import "@colors";
-@import "@sizes";
+@use "@colors" as *;
+@use "@sizes" as *;
 
 .root {
   min-height: 72px;

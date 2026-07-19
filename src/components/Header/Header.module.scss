@@ -1,6 +1,5 @@
-@import "@colors";
-@import "@sizes";
-
+@use "@colors" as *;
+@use "@sizes" as *;
 .root {
   position: sticky;
   top: 0;
