@@ -22,8 +22,8 @@ const { data, slug } = service;
         {
           data.images && data.images.length > 0 && (
             <div class="service-detail__gallery">
-              {data.images.map((img) => (
-                <img key={img} src={img} alt={data.title} />
+              {data.images.map((img: string) => (
+                <img src={img} alt={data.title} />
               ))}
             </div>
           )
@@ -34,8 +34,8 @@ const { data, slug } = service;
           {
             data.features && (
               <ul class="features">
-                {data.features.map((feature) => (
-                  <li key={feature}>✓ {feature}</li>
+                {data.features.map((feature: string) => (
+                  <li>✓ {feature}</li>
                 ))}
               </ul>
             )

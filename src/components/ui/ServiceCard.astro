@@ -1,9 +1,9 @@
 ---
 export interface Props {
-  service: any; // CollectionEntry<'services'>
+  service: any;
 }
 
-const { service } = Props;
+const { service } = Astro.props;
 const { data, slug } = service;
 ---
 
@@ -22,8 +22,8 @@ const { data, slug } = service;
     {
       data.features && data.features.length > 0 && (
         <ul class="service-card__features">
-          {data.features.slice(0, 3).map((feature) => (
-            <li key={feature}>✓ {feature}</li>
+          {data.features.slice(0, 3).map((feature: string) => (
+            <li>✓ {feature}</li>
           ))}
         </ul>
       )
