@@ -5,13 +5,13 @@ import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
   const services = await getCollection("services");
   return services.map((service) => ({
-    params: { slug: service.slug },
+    params: { slug: service.id },
     props: { service },
   }));
 }
 
 const { service } = Astro.props;
-const { data, slug } = service;
+const { data } = service;
 ---
 
 <Layout title={`${data.title} | Coucou`}>

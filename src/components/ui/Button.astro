@@ -1,0 +1,31 @@
+---
+interface Props {
+  variant?: "primary" | "outline";
+  size?: "md" | "lg";
+  href?: string;
+  [key: string]: any;
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  href,
+  ...props
+} = Astro.props as Props;
+
+const base =
+  "inline-flex items-center justify-center font-medium transition-all duration-300 rounded-2xl glass";
+
+const variants: Record<"primary" | "outline", string> = {
+  primary: "bg-teal-600 hover:bg-teal-500 text-white border-none shadow-xl",
+  outline: "border border-white/40 hover:bg-white/10",
+};
+---
+
+href={href}
+class={
+  `${base} ${variants[variant]} ${size === "lg" ? "text-xl py-6 px-10" : "py-4 px-8"}`
+}
+{props}
+>
+<slot />

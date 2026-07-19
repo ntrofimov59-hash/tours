@@ -1,0 +1,42 @@
+---
+const services = [
+  {
+    title: "Аренда шатров",
+    desc: "От классических до премиум с освещением и декором",
+    price: "от 35 000 ₽",
+  },
+  {
+    title: "Выездной кейтеринг",
+    desc: "Профессиональное меню и обслуживание на любом объекте",
+    price: "от 2 500 ₽/чел",
+  },
+  {
+    title: "Мероприятия под ключ",
+    desc: "Полная организация от идеи до реализации",
+    price: "Индивидуально",
+  },
+  {
+    title: "Био-туалеты",
+    desc: "Комфортные и экологичные решения для любых событий",
+    price: "от 8 000 ₽/сутки",
+  },
+];
+---
+
+<section id="services" class="py-24 bg-black/30">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-6xl font-bold text-center mb-16">Наши услуги</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {
+        services.map((service) => (
+          <div class="glass p-8 hover:scale-105 transition-transform group">
+            <div class="h-2 w-12 bg-teal-500 mb-8 rounded" />
+            <h3 class="text-3xl font-semibold mb-4">{service.title}</h3>
+            <p class="text-white/80 mb-8">{service.desc}</p>
+            <div class="text-teal-400 text-xl font-medium">{service.price}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

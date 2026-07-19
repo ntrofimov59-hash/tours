@@ -1,0 +1,15 @@
+---
+import styles from "./Footer.module.scss";
+
+const year = new Date().getFullYear();
+---
+
+<footer class={styles.footer}>
+  <div class={styles.container}>
+    <p class={styles.copyright}>&copy; {year} My Site. Все права защищены.</p>
+    <nav class={styles.nav}>
+      <a href="/privacy" class={styles.navLink}>Политика конфиденциальности</a>
+      <a href="/terms" class={styles.navLink}>Условия использования</a>
+    </nav>
+  </div>
+</footer>

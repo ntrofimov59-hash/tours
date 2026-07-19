@@ -1,13 +1,64 @@
 ---
-import { PreviewList } from '@/components/Preview';
-import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-
-
-const collections = await getCollection('previews');
-const previews = collections.map(({ data }) => data)
+import Layout from "../layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import Button from "@/components/ui/Button.astro";
+import Services from "@/components/sections/Services.astro";
+import About from "@/components/sections/About.astro";
+import Gallery from "@/components/sections/Gallery.astro";
+import Contact from "@/components/sections/Contact.astro";
 ---
 
-<Layout>
-	<PreviewList previews={previews} />
+<Layout
+  title="Premium Event | Шатры • Кейтеринг • Мероприятия под ключ • Био-туалеты"
+>
+  <Header />
+
+  <!-- HERO с Liquid Glass -->
+  <section class="hero-bg min-h-screen flex items-center relative">
+    <div class="max-w-7xl mx-auto px-6 text-center z-10">
+      <div
+        class="glass inline-block px-8 py-3 rounded-full mb-8 text-sm tracking-widest border border-white/30"
+      >
+        ПРЕМИУМ ОБСЛУЖИВАНИЕ МЕРОПРИЯТИЙ
+      </div>
+
+      <h1
+        class="text-7xl md:text-8xl lg:text-[6.5rem] leading-none font-bold mb-6 tracking-tighter"
+      >
+        СОЗДАЁМ<br />НЕЗАБЫВАЕМЫЕ<br />МОМЕНТЫ
+      </h1>
+
+      <p class="text-2xl md:text-3xl max-w-2xl mx-auto mb-12 text-white/90">
+        Аренда шатров • Выездной кейтеринг • Мероприятия под ключ • Био-туалеты
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <Button href="#services" size="lg" class="text-xl px-12 py-7"
+          >Выбрать услуги</Button
+        >
+        <Button
+          href="#contact"
+          variant="outline"
+          size="lg"
+          class="text-xl px-12 py-7">Получить консультацию</Button
+        >
+      </div>
+    </div>
+
+    <!-- Плавающие glass-элементы -->
+    <div
+      class="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-8 opacity-80"
+    >
+      <div class="glass px-6 py-3 text-sm">от 50 000 ₽</div>
+      <div class="glass px-6 py-3 text-sm">Премиум качество</div>
+    </div>
+  </section>
+
+  <Services />
+  <About />
+  <Gallery />
+  <Contact />
+
+  <Footer />
 </Layout>
