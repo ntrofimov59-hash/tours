@@ -1,0 +1,99 @@
+---
+export interface Props {
+  service: any; // CollectionEntry<'services'>
+}
+
+const { service } = Props;
+const { data, slug } = service;
+---
+
+<a href={`/services/${slug}`} class="service-card">
+  {
+    data.images && data.images.length > 0 && (
+      <div class="service-card__image">
+        <img src={data.images[0]} alt={data.title} />
+      </div>
+    )
+  }
+  <div class="service-card__content">
+    <h3>{data.title}</h3>
+    <p>{data.description}</p>
+    {data.price && <span class="service-card__price">от {data.price}</span>}
+    {
+      data.features && data.features.length > 0 && (
+        <ul class="service-card__features">
+          {data.features.slice(0, 3).map((feature) => (
+            <li key={feature}>✓ {feature}</li>
+          ))}
+        </ul>
+      )
+    }
+    <span class="service-card__link">Подробнее →</span>
+  </div>
+</a>
+
+<style>
+  .service-card {
+    display: block;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+  .service-card__image {
+    height: 200px;
+    overflow: hidden;
+  }
+  .service-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .service-card__content {
+    padding: 1.5rem;
+  }
+  .service-card__content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+  }
+  .service-card__content p {
+    color: #555;
+    font-size: 0.95rem;
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+  }
+  .service-card__price {
+    display: inline-block;
+    font-weight: bold;
+    color: #2d7b46;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .service-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+  }
+  .service-card__features li {
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 0.3rem;
+  }
+  .service-card__link {
+    font-weight: 600;
+    color: #2d7b46;
+    display: inline-block;
+  }
+  .service-card:hover .service-card__link {
+    text-decoration: underline;
+  }
+</style>

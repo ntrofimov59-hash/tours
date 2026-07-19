@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ServiceCard from "../../components/ui/ServiceCard.astro";
+
+// Получаем все услуги, сортируем по order
+const services = await getCollection(
+  "services",
+  ({ data }) => data.published !== false,
+);
+const sortedServices = services.sort(
+  (a, b) => (a.data.order || 0) - (b.data.order || 0),
+);
+---
+
+<Layout title="Наши услуги | Coucou">
+  <section class="services-catalog">
+    <div class="container">
+      <h1>Наши услуги</h1>
+      <p class="subtitle">Выберите то, что нужно для вашего мероприятия</p>
+
+      <div class="services-grid">
+        {sortedServices.map((service) => <ServiceCard service={service} />)}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .services-catalog {
+    padding: 4rem 0;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+</style>

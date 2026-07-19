@@ -1,0 +1,118 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const services = await getCollection("services");
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { data, slug } = service;
+---
+
+<Layout title={`${data.title} | Coucou`}>
+  <article class="service-detail">
+    <div class="container">
+      <h1>{data.title}</h1>
+      <div class="service-detail__content">
+        {
+          data.images && data.images.length > 0 && (
+            <div class="service-detail__gallery">
+              {data.images.map((img) => (
+                <img key={img} src={img} alt={data.title} />
+              ))}
+            </div>
+          )
+        }
+        <div class="service-detail__info">
+          <p class="description">{data.description}</p>
+          {data.price && <p class="price">Стоимость: {data.price}</p>}
+          {
+            data.features && (
+              <ul class="features">
+                {data.features.map((feature) => (
+                  <li key={feature}>✓ {feature}</li>
+                ))}
+              </ul>
+            )
+          }
+          <a href="/booking" class="btn">Забронировать</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .service-detail {
+    padding: 4rem 0;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .service-detail__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .service-detail__gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .service-detail__gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .service-detail__info .description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333;
+  }
+  .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2d7b46;
+    margin: 1.5rem 0;
+  }
+  .features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+  .features li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #444;
+  }
+  .btn {
+    display: inline-block;
+    background: #2d7b46;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .btn:hover {
+    background: #1f5a33;
+  }
+  @media (max-width: 768px) {
+    .service-detail__content {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
